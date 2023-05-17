@@ -1,1 +1,26 @@
+import okex
+
+# 初始化API
+client = okex.Account(api_key, api_secret, passphrase, False)
+
+# 获取市场深度
+depth = client.get_depth('BTC-USDT')
+
+# 获取账户余额
+balance = client.get_wallet()
+
+# 下单
+order = client.place_order(
+    'BTC-USDT',
+    'buy',
+    'limit',
+    price=50000,
+    size=1
+)
+
+# 撤单
+client.cancel_order('BTC-USDT', order['order_id'])
+
+# 获取交易历史
+trades = client.get_fills('BTC-USDT')
 
